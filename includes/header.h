@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:54:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 09:57:14 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:32:28 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 
 # include "../libft/libft.h"
 # include "execution.h"
-# include "parsing.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>

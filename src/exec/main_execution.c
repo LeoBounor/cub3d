@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:04:26 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/12 23:38:43 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 15:10:01 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 int	game_loop(t_game *game)
 {

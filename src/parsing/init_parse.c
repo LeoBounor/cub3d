@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:50:18 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 11:51:20 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:05:09 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 void	define_typeof_struct(char *str, int i, int *type)
 {

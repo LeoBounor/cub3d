@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:43:25 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/08 16:47:54 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 int	handler_key_press(int keycode, t_game *game)
 {

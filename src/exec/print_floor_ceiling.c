@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_floor_ceiling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:37:58 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/12 23:23:21 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 unsigned long	rgb_to_hexa(int color[3])
 {

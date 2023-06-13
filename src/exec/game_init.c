@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:36:47 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 10:32:59 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 15:10:09 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 void	set_texture_id(t_texture_info *all_textures)
 {

@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   colors_parse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 10:06:57 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/12 23:42:59 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 13:47:03 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 int	init_color(t_game *game, int *i, int (*color)[3], int nb)
 {
 	if ((*color)[nb] != -1 && clear_textures(game))
 		ft_err_map("Invalide color format\n", game->fd_str, game);
-	(*color)[nb] = ft_atoi((game->fd_str + *i), i);
+	(*color)[nb] = ft_atoi((game->fd_str + *i));
+	*i += (*color)[nb];
 	if ((*color)[nb] < 0 || (*color)[nb] > 255)
 	{
 		clear_textures(game);

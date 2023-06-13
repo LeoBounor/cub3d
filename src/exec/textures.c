@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:42:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 10:32:17 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 int	load_textures(t_texture_info *textures)
 {

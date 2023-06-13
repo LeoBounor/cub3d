@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_two.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:19:05 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 11:46:18 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 14:41:13 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 void	skip_to_next_word(char *str, int *i)
 {
@@ -49,6 +49,8 @@ char	*ft_free_strjoin(char *s1, char *s2)
 	int		i;
 	int		len;
 
+	printf("s1 = %s\n", s1);
+	printf("s2 = %s\n", s2);
 	i = 0;
 	len = ft_strlen(s1) + ft_strlen(s2);
 	res = malloc((len + 1) * sizeof(char));

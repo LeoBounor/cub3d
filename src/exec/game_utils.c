@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:12:16 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/12 23:36:54 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 int	is_in_map_limits(t_game *game, int x, int y)
 {

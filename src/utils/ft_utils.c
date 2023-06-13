@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:56:43 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/06 18:33:09 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 15:06:16 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 void	stop_mlx(t_game *game)
 {
@@ -52,7 +52,7 @@ char	*ft_read_all(int fd, t_game *game, int i)
 
 	if (fd == -1)
 		ft_err_map("Can't open this file\n", NULL, game);
-	all = NULL;
+	all = ft_calloc(1, 1);
 	buffer = malloc(sizeof(char) * (17));
 	if (!buffer)
 		return (NULL);

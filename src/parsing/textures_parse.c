@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures_parse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 10:07:01 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 11:54:09 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 14:45:28 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
 t_texture	init_texture(t_game *game, char *texture_path)
 {
