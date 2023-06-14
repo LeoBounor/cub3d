@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbounor <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 09:53:59 by lbounor           #+#    #+#              #
-#    Updated: 2023/06/13 09:54:34 by lbounor          ###   ########.fr        #
+#    Updated: 2023/06/14 10:37:20 by Leo              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,12 @@
 
 NAME        := cub3d
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror -O3
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
 SRCS        :=      libft/ft_strnstr.c \
-						  libft/get_next_line_bonus.c \
 						  libft/ft_isdigit.c \
 						  libft/ft_lstadd_back.c \
 						  libft/ft_putstr_fd.c \
@@ -57,7 +56,6 @@ SRCS        :=      libft/ft_strnstr.c \
 						  libft/ft_memset.c \
 						  libft/ft_substr.c \
 						  libft/ft_strncmp.c \
-						  libft/get_next_line_utils_bonus.c \
 						  libft/ft_strmapi.c \
 						  libft/ft_strtrim.c \
 						  libft/ft_memmove.c \

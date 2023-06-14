@@ -6,7 +6,7 @@
 /*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:33:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/08 15:56:26 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/13 21:55:32 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	replace_to_zero(t_game *game)
 		{
 			if (game->game_tab[i][j] == 2)
 				game->game_tab[i][j] = 0;
-			printf("%d", game->game_tab[i][j]);
 			j++;
 		}
 		i++;

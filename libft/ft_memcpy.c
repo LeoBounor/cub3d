@@ -3,25 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 14:37:56 by vducoulo          #+#    #+#             */
-/*   Updated: 2021/11/15 13:29:25 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/03 12:18:13 by lbounor           #+#    #+#             */
+/*   Updated: 2021/11/10 14:09:09 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *restrict_dst, const void *restrict_src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char		*dsttmp;
-	const char	*srctmp;
+	unsigned char	*a;
+	unsigned char	*b;
+	size_t			i;
 
-	dsttmp = restrict_dst;
-	srctmp = restrict_src;
-	if (!dsttmp && !srctmp)
+	a = (unsigned char *)dst;
+	b = (unsigned char *)src;
+	i = 0;
+	if (!dst && !src)
 		return (NULL);
-	while (n-- > 0)
-		*dsttmp++ = *srctmp++;
-	return (restrict_dst);
+	while (i < n)
+	{
+		a[i] = b[i];
+		i++;
+	}
+	return (dst);
 }

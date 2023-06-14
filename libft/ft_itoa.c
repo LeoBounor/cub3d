@@ -3,65 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 00:14:44 by vducoulo          #+#    #+#             */
-/*   Updated: 2021/11/17 18:18:03 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/08 13:32:45 by Leo               #+#    #+#             */
+/*   Updated: 2021/11/10 15:36:59 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	givemedatlen(int i)
+static int	ft_nblen(long long int n)
 {
-	int		len;
+	int	len;
 
 	len = 0;
-	while (i / 10)
+	if (n < 0)
 	{
-		i = i / 10;
-		len ++;
+		n = n * -1;
+		len++;
 	}
-	len ++;
+	while (n >= 0)
+	{
+		n = n / 10;
+		len++;
+		if (n == 0)
+			break ;
+	}
 	return (len);
-}
-
-static char	*givemedatdest(int sign, char *dest, unsigned int r, int len)
-{
-	if (sign < 0)
-		dest[0] = '-';
-	dest[len] = '\0';
-	while (len > 0 && dest[len - 1] != '-')
-	{
-		dest[len - 1] = r % 10 + '0';
-		r = r / 10;
-		len --;
-	}
-	return (dest);
 }
 
 char	*ft_itoa(int n)
 {
 	int				len;
-	unsigned int	r;
-	char			*dest;
-	int				sign;
+	int				i;
+	char			*strconvert;
+	long long int	long_n;
 
-	len = givemedatlen(n);
-	sign = 1;
+	long_n = n;
+	len = ft_nblen(long_n);
+	i = 0;
+	strconvert = (char *)malloc(sizeof(char) * len + 1);
+	if (!strconvert)
+		return (NULL);
+	strconvert[len--] = '\0';
+	if (n == 0)
+		strconvert[0] = '0';
 	if (n < 0)
 	{
-		r = -n;
-		len += 1;
-		sign = -1;
+		long_n = long_n * -1;
+		strconvert[0] = '-';
 	}
-	else
-		r = n;
-	dest = malloc(len * sizeof(char) + 1);
-	if (dest)
+	while (long_n > 0)
 	{
-		return (givemedatdest(sign, dest, r, len));
+		strconvert[len--] = 48 + (long_n % 10);
+		long_n = long_n / 10;
 	}
-	else
-		return (NULL);
+	return (strconvert);
 }

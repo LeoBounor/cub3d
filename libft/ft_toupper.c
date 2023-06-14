@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:45:07 by vducoulo          #+#    #+#             */
-/*   Updated: 2021/11/07 20:17:48 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/02 13:58:35 by lbounor           #+#    #+#             */
+/*   Updated: 2021/11/10 13:13:13 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_toupper(int c)
 {
@@ -16,4 +18,5 @@ int	ft_toupper(int c)
 		return (c - 32);
 	else
 		return (c);
+	return (0);
 }

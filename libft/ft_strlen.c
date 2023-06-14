@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 16:05:42 by vducoulo          #+#    #+#             */
-/*   Updated: 2022/09/09 17:18:06 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/02 15:33:32 by lbounor           #+#    #+#             */
+/*   Updated: 2023/06/13 23:57:24 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strlen(const char *str)
 {

@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 19:40:31 by vducoulo          #+#    #+#             */
-/*   Updated: 2021/11/07 19:44:06 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/02 14:07:08 by lbounor           #+#    #+#             */
+/*   Updated: 2021/11/10 13:13:13 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_tolower(int c)
 {
@@ -16,4 +18,5 @@ int	ft_tolower(int c)
 		return (c + 32);
 	else
 		return (c);
+	return (0);
 }

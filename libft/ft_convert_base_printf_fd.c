@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base_printf_fd.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:40:52 by vducoulo          #+#    #+#             */
-/*   Updated: 2022/05/11 15:55:54 by vducoulo         ###   ########.fr       */
+/*   Updated: 2023/06/13 23:30:36 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 int	givemedatcount(unsigned long nb, int baselen, char towork)
 {

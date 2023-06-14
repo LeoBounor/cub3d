@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:50:18 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 11:51:20 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/14 11:18:28 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	define_typeof_struct(char *str, int i, int *type)
 {
 	skip_to_next_word(str, &i);
-	printf("%s", str + i);
-	printf("\n");
 	while (str[i] == '\n')
 	{
 		i++;
@@ -31,7 +29,7 @@ void	define_typeof_struct(char *str, int i, int *type)
 		*type = 3;
 	else if (!ft_strncmp(str + i, "EA ", 3) || !ft_strncmp(str + i, "EA	", 3))
 		*type = 4;
-	else if (!ft_strncmp(str + i, "F ", 2) || !ft_strncmp(str + i, "F	", 3)) //mettre 2 ou 3
+	else if (!ft_strncmp(str + i, "F ", 2) || !ft_strncmp(str + i, "F	", 3))
 		*type = 5;
 	else if (!ft_strncmp(str + i, "C ", 2) || !ft_strncmp(str + i, "C	", 3))
 		*type = 6;
@@ -57,7 +55,6 @@ void	sort_parse(t_game *game, int type, int i)
 	{
 		skip_to_next_parse(game, &i);
 		define_typeof_struct(game->fd_str, i, &type);
-		printf("%i", i);
 		if (type == 1)
 			load_texture(game, game->all_textures->north_texture, &i);
 		else if (type == 2)

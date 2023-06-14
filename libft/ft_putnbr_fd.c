@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 14:08:14 by vducoulo          #+#    #+#             */
-/*   Updated: 2022/10/25 23:38:50 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/08 17:51:04 by Leo               #+#    #+#             */
+/*   Updated: 2023/06/13 23:36:52 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
 int	givemelen(unsigned int nb)
 {

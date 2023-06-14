@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:36:47 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 10:32:59 by lbounor          ###   ########.fr       */
+/*   Updated: 2023/06/13 19:08:29 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	game_init(char *map_path, t_game *game)
 	set_texture_id(game->all_textures);
 	init_game_window(game);
 	game->game_cell_size = 64;
-	game->speed = 4;
+	game->speed = 5;
 	game->player_delta_x = cos(game->player_angle) * game->speed;
 	game->player_delta_y = sin(game->player_angle) * game->speed;
 	game->raycast = (t_raycast *)ft_calloc(1, sizeof(t_raycast));

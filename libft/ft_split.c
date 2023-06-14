@@ -3,91 +3,95 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 18:23:52 by vducoulo          #+#    #+#             */
-/*   Updated: 2021/11/17 17:57:52 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/06 14:28:50 by Leo               #+#    #+#             */
+/*   Updated: 2021/11/16 11:03:06 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ocounter(char const *s, int i, char c)
+static size_t	ft_divlen(char *s, int c)
 {
-	size_t	o;
+	size_t	len;
 
-	o = 0;
-	while (s[i + o] && s[i + o] != c)
+	len = 0;
+	while (s[len] && s[len] != c)
 	{
-		o++;
+		len++;
 	}
-	return (o);
+	return (len);
 }
 
-static int	givemedatcount(char const *s, char c)
+static size_t	ft_splitsize(char *s, int c)
 {
 	size_t	i;
-	size_t	count;
+	size_t	len;
+	size_t	size;
 
-	count = 0;
 	i = 0;
+	len = 0;
+	size = 0;
 	while (s[i])
 	{
-		if (ocounter(s, i, c) > 0)
+		len = ft_divlen(s + i, c);
+		if (len > 0)
 		{
-			count++;
-			i += ocounter(s, i, c);
+			size++;
+			i--;
 		}
-		else
-			i++;
+		i += len;
+		i++;
 	}
-	return (count);
+	return (size);
 }
 
-static char	*givemedatsplit(char const *s, int i, char c, char **dest)
-{
-	int		ocount;
-	size_t	o;
-	char	*str;
-
-	o = 0;
-	ocount = ocounter(s, i, c);
-	str = ft_substr(s, i, ocount);
-	if (!str)
-	{
-		while (dest[o])
-			free(dest[o++]);
-		free(dest);
-		return (0);
-	}
-	return (str);
-}
-
-char	**ft_split(char const *s, char c)
+static void	*ft_freesplit(char **split, size_t n)
 {
 	size_t	i;
-	size_t	o;
-	char	**dest;
+
+	i = n - 1;
+	while (i < n)
+		free(split[i--]);
+	free(split);
+	return (NULL);
+}
+
+static char	**ft_splitstr(char **split, char *s, char c)
+{
+	size_t		i;
+	size_t		n;
+	size_t		size;
+
+	i = 0;
+	n = 0;
+	while (((char *)s)[i])
+	{
+		size = ft_divlen((char *)s + i, c);
+		if (size > 0)
+		{
+			split[n] = ft_substr(s, i--, size);
+			if (!split[n])
+				return (ft_freesplit(split, n));
+			n++;
+		}
+		i = i + size + 1;
+	}
+	split[n] = 0;
+	return (split);
+}
+
+char	**ft_split(const char *s, char c)
+{	
+	size_t		size;
+	char		**split;
 
 	if (!s)
 		return (NULL);
-	dest = malloc((givemedatcount(s, c) + 1) * sizeof(char *));
-	if (!dest)
+	size = ft_splitsize((char *)s, c);
+	split = malloc((size + 1) * sizeof(char *));
+	if (!split)
 		return (NULL);
-	i = 0;
-	o = 0;
-	while (s[i])
-	{
-		if (ocounter(s, i, c) > 0)
-		{
-			dest[o++] = givemedatsplit(s, i, c, dest);
-			if (!dest[o - 1])
-				return (NULL);
-			i += ocounter(s, i, c);
-		}
-		else
-			i++;
-	}
-	dest[o] = NULL;
-	return (dest);
+	return (ft_splitstr(split, (char *)s, c));
 }

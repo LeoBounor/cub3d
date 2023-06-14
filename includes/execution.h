@@ -6,15 +6,12 @@
 /*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:06:16 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/12 23:43:56 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 11:22:52 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTION_H
 # define EXECUTION_H
-
-# define DOF_DELIM 20 // depth of field delimiter
-# define DR 0.0174533 // one degree in radians
 
 typedef struct s_texture
 {
@@ -79,8 +76,8 @@ typedef struct s_game
 	int				endian;
 	int				window_width;
 	int				window_height;
-	float			x;					//Position dans l'axe des x du joueur
-	float			y;					//Position dans l'axe des y du joueur
+	float			x;
+	float			y;
 	double			player_delta_x;
 	double			player_delta_y;
 	double			player_angle;
@@ -118,10 +115,18 @@ void				raycasting(t_game *game);
 double				assure_360_deg_angle(double a);
 void				player_rotate_right(t_game *game);
 void				player_rotate_left(t_game *game);
-void				draw_walls(t_game *game, t_raycast *raycast, t_ray *ray, int x);
+void				draw_walls(t_game *game, t_raycast *raycast, \
+t_ray *ray, int x);
 void				set_texture_x_coordonates(t_ray *ray);
 int					get_texture_pixel(t_texture *texture, int x, int y);
-double				get_traveled_ray_distance(float ax, float ay, float bx, float by);
+double				get_traveled_ray_distance(float ax, float ay, \
+float bx, float by);
+void				raycasting_horizontal_looking_up(t_game *game, t_ray *ray);
+void				raycasting_horizontal_looking_down(t_game *game, \
+t_ray *ray);
+void				raycasting_looking_straight(t_game *game, t_ray *ray);
+void				raycasting_vertical_looking_right(t_game *game, t_ray *ray);
+void				raycasting_vertical_looking_left(t_game *game, t_ray *ray);
 
 //PARSING
 void				init_parse(char *map_file, t_game *game);

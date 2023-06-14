@@ -3,31 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vducoulo <vducoulo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 16:00:56 by vducoulo          #+#    #+#             */
-/*   Updated: 2021/11/08 16:43:58 by vducoulo         ###   ########.fr       */
+/*   Created: 2021/11/04 13:29:55 by lbounor           #+#    #+#             */
+/*   Updated: 2021/11/10 15:54:53 by lbounor          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *tofind, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	o;
+	size_t			i;
+	size_t			len_needle;
+	unsigned char	*h;
+	unsigned char	*n;
 
-	if (!tofind[0])
-		return ((char *)str);
 	i = 0;
-	while (str[i])
+	h = (unsigned char *)haystack;
+	n = (unsigned char *)needle;
+	len_needle = ft_strlen((char *)n);
+	if (n[0] == '\0')
+		return ((char *)h);
+	while (h[i] && i + len_needle <= len)
 	{
-		o = 0;
-		while (str[i + o] == tofind[o] && i + o < len)
+		if (h[i] == n[0])
 		{
-			if (tofind[o + 1] == '\0')
-				return ((char *)&str[i]);
-			o++;
+			if (ft_strncmp((char *)&h[i], (char *)n, len_needle) == 0)
+				return ((char *)&h[i]);
 		}
 		i++;
 	}

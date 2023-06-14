@@ -6,7 +6,7 @@
 /*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:07:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/08 15:09:16 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 11:22:27 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,30 +45,26 @@ void	get_dimension(int *h, int *w, char *str)
 int	*fill_tab(t_game *game, char *line, int i, int j)
 {
 	int			*str;
-	t_parsing	parse;
+	t_parsing	p;
 
-	parse.x = 0;
-	parse.y = i;
-	str = malloc(sizeof(int) * game->game_tab_width);
-	if (!str && clear_textures(game))
-		ft_err_map("Malloc error\n", game->fd_str, game);
+	p.x = 0;
+	p.y = i;
+	str = ft_calloc(game->game_tab_width, sizeof(int));
 	while (i != 0)
-		if (line[parse.x++] == '\n')
+		if (line[p.x++] == '\n')
 			i--;
-	while (line[parse.x] && line[parse.x] != '\n')
+	while (line[p.x] && line[p.x] != '\n')
 	{
-		if (line[parse.x] != 48 && line[parse.x] != 49 && line[parse.x] != 78 \
-			&& line[parse.x] != 83 && line[parse.x] != 69 && line[parse.x] != \
-			87 && line[parse.x] != 32 && clear_textures(game) &&
-			free_map(game->game_tab, parse.y))
-			return (ft_err_map("Invalid char in the map\n", game->fd_str, game),
-				NULL);
-		if (line[parse.x] == ' ')
+		if (line[p.x] != 48 && line[p.x] != 49 && line[p.x] != 78 && line[p.x] \
+		!= 83 && line[p.x] != 69 && line[p.x] != 87 && line[p.x] != 32 && \
+		clear_textures(game) && free_map(game->game_tab, p.y))
+			return (ft_err_map("Invalid map char\n", game->fd_str, game), NULL);
+		if (line[p.x] == ' ')
 			str[j] = 2;
 		else
-			str[j] = line[parse.x] - '0';
+			str[j] = line[p.x] - '0';
 		j++;
-		parse.x++;
+		p.x++;
 	}
 	while (j != game->game_tab_width)
 		str[j++] = 2;
@@ -107,7 +103,7 @@ void	generate_tab(t_game *game, char *line)
 	while (*(line - 1) != '\n')
 		line--;
 	get_dimension(&game->game_tab_height, &game->game_tab_width, line);
-	game->game_tab = malloc(sizeof(char *) * game->game_tab_height);
+	game->game_tab = malloc(sizeof(int *) * game->game_tab_height);
 	if (!game->game_tab && clear_textures(game))
 		ft_err_map("Malloc error\n", game->fd_str, game);
 	while (i != game->game_tab_height)
