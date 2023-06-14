@@ -6,7 +6,7 @@
 #    By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 14:43:17 by jcollon           #+#    #+#              #
-#    Updated: 2023/06/13 14:07:53 by jcollon          ###   ########lyon.fr    #
+#    Updated: 2023/06/14 01:54:37 by jcollon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ OBJ = $(addprefix $(DIR_OBJ)/, $(OBJ_FILE))
 DIR_OBJ := .obj
 FLAGS := -g3 -MMD -MP -Wall -Wextra #-Werror
 
-INCLUDE := -I. -I../../includes -I../libft -I../minilibx
-RELINK := Makefile ../../libft/libft.a
+INCLUDE := -I. -I../includes -I../libft -I../minilibx
+RELINK := Makefile ../libft/libft.a ../minilibx/libmlx.a
 
 # COLORS
 GOOD_TEXT := \033[32m
@@ -48,7 +48,7 @@ $(NAME): $(DIR_OBJ) $(OBJ)
 $(DIR_OBJ):
 	mkdir -p $@
 
-$(DIR_OBJ)/%.o: %.c $(RELINK)
+$(DIR_OBJ)/%.o: src/%.c $(RELINK)
 	echo -e "$(GOOD_TEXT)⏳ Making $(NAME:.a=)"
 	printf "$(INFO_TEXT) ➥ Making $(RESET)$@ $(BAD_TEXT)"
 	$(CC) $(FLAGS) -o $@ -c $< $(INCLUDE)

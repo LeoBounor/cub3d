@@ -6,13 +6,19 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:07:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:20:23 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
 #include "parsing.h"
 
+/**
+ * @brief Get the dimension of the map
+ * 
+ * @param h: height of the map
+ * @param w: width of the map
+ * @param str: string of the map
+ */
 void	get_dimension(int *h, int *w, char *str)
 {
 	int	i;
@@ -38,11 +44,15 @@ void	get_dimension(int *h, int *w, char *str)
 	}
 }
 
-/*
-**	On remplit un tableau d'entiers avec les valeurs de notre map
-**	contenu dans un tableau de charactères.
-**	Les espaces vide sont remplacés par 2.
-*/
+/**
+ * @brief Fill the table with the map, and replace the spaces by 2
+ * 
+ * @param game: game structure
+ * @param line: string of the map
+ * @param i: height of the map
+ * @param j: width of the map
+ * @return int*: the map
+ */
 int	*fill_tab(t_game *game, char *line, int i, int j)
 {
 	int			*str;
@@ -76,6 +86,12 @@ int	*fill_tab(t_game *game, char *line, int i, int j)
 	return (str);
 }
 
+/**
+ * @brief Check if all the requirements are met before generating the map
+ * 
+ * @param game: game structure
+ * @param str: string of the map
+ */
 void	check_all_before_gen_map(t_game *game, char *str)
 {
 	int	i;
@@ -99,6 +115,12 @@ void	check_all_before_gen_map(t_game *game, char *str)
 	ft_err_map("At least one texture or color is missing\n", game->fd_str, game);
 }
 
+/**
+ * @brief Generate the map
+ * 
+ * @param game: game structure
+ * @param line: string of the map
+ */
 void	generate_tab(t_game *game, char *line)
 {
 	int		i;

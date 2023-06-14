@@ -6,17 +6,15 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:50:18 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 15:05:09 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:24:37 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "parsing.h"
 
 void	define_typeof_struct(char *str, int i, int *type)
 {
 	skip_to_next_word(str, &i);
-	printf("%s", str + i);
-	printf("\n");
 	while (str[i] == '\n')
 	{
 		i++;
@@ -57,7 +55,6 @@ void	sort_parse(t_game *game, int type, int i)
 	{
 		skip_to_next_parse(game, &i);
 		define_typeof_struct(game->fd_str, i, &type);
-		printf("%i", i);
 		if (type == 1)
 			load_texture(game, game->all_textures->north_texture, &i);
 		else if (type == 2)

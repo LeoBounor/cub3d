@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:19:05 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 14:41:13 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:05:33 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char	*ft_free_strjoin(char *s1, char *s2)
 	int		i;
 	int		len;
 
-	printf("s1 = %s\n", s1);
-	printf("s2 = %s\n", s2);
 	i = 0;
 	len = ft_strlen(s1) + ft_strlen(s2);
 	res = malloc((len + 1) * sizeof(char));
@@ -71,4 +69,22 @@ char	*ft_free_strjoin(char *s1, char *s2)
 	res[i] = 0;
 	free(s1);
 	return (res);
+}
+
+int	ft_intlen(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n < 0)
+	{
+		len++;
+		n *= -1;
+	}
+	while (n > 9)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len + 1);
 }

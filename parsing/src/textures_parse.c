@@ -6,12 +6,19 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 10:07:01 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 15:23:00 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:24:45 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "parsing.h"
 
+/**
+ * @brief Initialize a texture for the mlx
+ * 
+ * @param game: game structure
+ * @param texture_path: path of the texture
+ * @return t_texture: the texture
+ */
 t_texture	init_texture(t_game *game, char *texture_path)
 {
 	t_texture	new;
@@ -38,6 +45,13 @@ t_texture	init_texture(t_game *game, char *texture_path)
 	return (new);
 }
 
+/**
+ * @brief Get the texture path and then call init_texture
+ * 
+ * @param game: game structure
+ * @param texture: the loaded texture
+ * @param i: index of the string
+ */
 void	load_texture(t_game *game, t_texture *texture, int *i)
 {
 	int	tmp;

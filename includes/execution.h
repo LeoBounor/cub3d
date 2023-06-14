@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:06:16 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/12 23:43:56 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:19:05 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,17 +123,6 @@ void				set_texture_x_coordonates(t_ray *ray);
 int					get_texture_pixel(t_texture *texture, int x, int y);
 double				get_traveled_ray_distance(float ax, float ay, float bx, float by);
 
-//PARSING
-void				init_parse(char *map_file, t_game *game);
-void				check_map(t_game *game, int i, int j);
-void				load_texture(t_game *game, t_texture *texture, int *i);
-void				generate_tab(t_game *game, char *line);
-char				*ft_read_all(int fd, t_game *game, int i);
-void				skip_to_next_parse(t_game *game, int *i);
-void				skip_to_eol_or_eof(char *str, int *i);
-void				skip_to_next_word(char *str, int *i);
-void				load_color(t_game *game, int (*color)[3], int *i, int nb);
-
 //UTILS
 int					clear_textures(t_game *game);
 int					free_map(int **map, int n);
@@ -144,5 +133,6 @@ void				free_and_exit_game(t_game *game, int exit_ret);
 char				*ft_free_strjoin(char *s1, char *s2);
 void				my_mlx_pixel_put(t_game *game, int x, int y, int color);
 int					is_in_map_limits(t_game *game, int x, int y);
+int					ft_intlen(int n);
 
 #endif

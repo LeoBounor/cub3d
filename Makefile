@@ -6,7 +6,7 @@
 #    By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:11:58 by jcollon           #+#    #+#              #
-#    Updated: 2023/06/13 15:07:24 by jcollon          ###   ########lyon.fr    #
+#    Updated: 2023/06/14 02:01:41 by jcollon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ OBJ = $(addprefix $(DIR_OBJ)/, $(SRC_FILE:.c=.o))
 
 DIR_OBJ := .obj
 LIBFT := libft/libft.a
+PARSING := parsing/parsing.a
 MINILIBX := minilibx/libmlx.a
 EXEC := src/exec/exec.a
-PARSING := src/parsing/parsing.a
 UTILS := src/utils/utils.a
 FLAGS := -g -MMD -MP -Wall -Wextra #-Werror
 
@@ -45,7 +45,7 @@ RESET := \033[0m
 
 all: $(NAME)
 bonus: all
-$(NAME): $(MINILIBX) $(LIBFT) $(PARSING) $(EXEC) $(UTILS) $(DIR_OBJ) $(OBJ)
+$(NAME): $(MINILIBX) $(LIBFT) $(UTILS) $(PARSING) $(EXEC) $(DIR_OBJ) $(OBJ)
 	echo -e "$(GOOD_TEXT)✅ Making $(NAME)$(BAD_TEXT)"
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(EXEC) $(PARSING) $(UTILS) $(LIBFT) $(MINILIBX) $(MLX_FLAGS) $(INCLUDE)
 	printf "$(RESET)"
@@ -54,14 +54,19 @@ $(DIR_OBJ):
 	mkdir -p $@
 $(LIBFT): FORCE
 	+$(MAKE) -sC libft
+$(PARSING): FORCE
+	+$(MAKE) -sC parsing
 $(EXEC): FORCE
 	+$(MAKE) -sC src/exec
-$(PARSING): FORCE
-	+$(MAKE) -sC src/parsing
 $(UTILS): FORCE
 	+$(MAKE) -sC src/utils
 $(MINILIBX):
-	$(MAKE) -j1 -sC minilibx
+	if [[ " $(shell uname -s)" = *" Linux"* ]]; then \
+		ln -s mlx_linux minilibx; \
+	else \
+		ln -s mlx minilibx; \
+	fi
+	+$(MAKE) -j1 -sC minilibx
 
 $(DIR_OBJ)/%.o: src/%.c $(RELINK)
 	echo -e "$(GOOD_TEXT)⏳ Making $(NAME)"
@@ -73,20 +78,22 @@ clean:
 	if [[ " $(MAKECMDGOALS)" = *" $@"* ]]; then \
 		echo -e "$(CLEAN_TEXT)🧹 Cleaning minilibx$(RESET)"; \
 		$(MAKE) -sC minilibx clean > /dev/null; \
+		rm -rf minilibx; \
 		$(MAKE) -sC libft clean; \
+		$(MAKE) -sC parsing clean; \
 		$(MAKE) -sC src/exec clean; \
-		$(MAKE) -sC src/parsing clean; \
 		$(MAKE) -sC src/utils clean; \
 		echo -e "$(CLEAN_TEXT)🧹 Cleaning $(NAME)$(RESET)"; \
 	fi
 	rm -rf $(DIR_OBJ)
 fclean: clean
 	echo -e "$(CLEAN_TEXT)🧹 FCleaning minilibx$(RESET)"
-	$(MAKE) -sC minilibx clean > /dev/null
-	$(MAKE) -sC libft fclean
-	$(MAKE) -sC src/exec fclean
-	$(MAKE) -sC src/parsing fclean
-	$(MAKE) -sC src/utils fclean
+	-$(MAKE) -sC minilibx clean > /dev/null
+	rm -rf minilibx
+	-$(MAKE) -sC libft fclean
+	-$(MAKE) -sC parsing fclean
+	-$(MAKE) -sC src/exec fclean
+	-$(MAKE) -sC src/utils fclean
 	echo -e "$(CLEAN_TEXT)🧹 FCleaning $(NAME)$(RESET)"
 	rm -f $(NAME)
 re: fclean all

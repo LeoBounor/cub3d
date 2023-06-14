@@ -1,0 +1,7 @@
+.vscode
+minilibx
+a.out
+*.o
+*.d
+*.a
+cub3d

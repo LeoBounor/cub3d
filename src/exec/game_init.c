@@ -6,11 +6,12 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:36:47 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 15:10:09 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:27:14 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+#include "parsing.h"
 
 void	set_texture_id(t_texture_info *all_textures)
 {

@@ -6,16 +6,18 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:33:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 01:19:58 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "parsing.h"
 
-/*
-**	On regarde d'abord si verticalement le tab est rempli de 1 ou 2,
-**	puis horizontalement. Si ce n'est pas le cas, on retourne 1.
-*/
+/**
+ * @brief Check if the map is surrounded by walls, vertically then horizontally
+ * 
+ * @param game: game structure
+ * @return 1 if the map is not surrounded by walls, 0 otherwise
+ */
 int	check_border(t_game *game)
 {
 	int	i;
@@ -43,10 +45,14 @@ int	check_border(t_game *game)
 	return (0);
 }
 
-/*
-**	Une case du tableau représente 64 et on ajoute 32 pour centrer le player
-**	Puis on calcule l'angle du player en fonction de sa position.
-*/
+/**
+ * @brief Check if the player is in the map and set the player position and
+ * angle, a square in the map is 64px and we add 32 to center the player
+ * 
+ * @param game: game structure 
+ * @param i: index of the line
+ * @param j: index of the column
+ */
 void	check_player_position(t_game *game, int i, int j)
 {
 	if (game->game_tab[i][j] == 'N' - '0' || game->game_tab[i][j] == 'S' - '0' \
@@ -66,6 +72,13 @@ void	check_player_position(t_game *game, int i, int j)
 	}
 }
 
+/**
+ * @brief Check if a square is surrounded by walls
+ * 
+ * @param game: game structure
+ * @param i: index of square in the line
+ * @param j: index of square in the column
+ */
 void	check_surronded_by_wall(t_game *game, int i, int j)
 {
 	if ((game->game_tab[i + 1][j] == 2 || game->game_tab[i - 1][j] == 2 || \
@@ -74,6 +87,11 @@ void	check_surronded_by_wall(t_game *game, int i, int j)
 		ft_err_map("Map error\n", game->fd_str, game);
 }
 
+/**
+ * @brief Replace all 2 by 0 in the map
+ * 
+ * @param game: game structure
+ */
 void	replace_to_zero(t_game *game)
 {
 	int	i;
@@ -88,13 +106,19 @@ void	replace_to_zero(t_game *game)
 		{
 			if (game->game_tab[i][j] == 2)
 				game->game_tab[i][j] = 0;
-			printf("%d", game->game_tab[i][j]);
 			j++;
 		}
 		i++;
 	}
 }
 
+/**
+ * @brief Check if the map is valid, if not, free the map and exit the program
+ * 
+ * @param game: game structure 
+ * @param i: index of the line
+ * @param j: index of the column
+ */
 void	check_map(t_game *game, int i, int j)
 {
 	game->x = -1;
