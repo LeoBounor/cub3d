@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:54:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 19:10:04 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 19:38:41 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 #  define ROT_RIGHT 113
 #  define ROT_LEFT 114
 #  define ON_LINUX 1
-#  include "../mlx_linux/mlx.h"
 # else
 #  define ESC 53
 #  define UP 13
@@ -32,10 +31,10 @@
 #  define ROT_LEFT 124
 #  define ROT_RIGHT 123
 #  define ON_LINUX 0
-#  include "../mlx/mlx.h"
 # endif
 
-# include "../libft/libft.h"
+# include "mlx.h"
+# include "libft.h"
 # include "execution.h"
 # include "utils.h"
 # include <unistd.h>
