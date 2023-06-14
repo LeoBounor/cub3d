@@ -6,7 +6,7 @@
 /*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:06:45 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 22:26:33 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 11:31:06 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	player_move_up(t_game *game)
 	float	n_x;
 	float	n_y;
 
-	n_x = game->x + game->player_delta_x * game->speed;
-	n_y = game->y + game->player_delta_y * game->speed;
+	n_x = game->x + game->player_delta_x * 2;
+	n_y = game->y + game->player_delta_y * 2;
 	if (BONUS != 1 || !is_wall(game, n_x, n_y))
 	{
-		game->x += game->player_delta_x * game->speed;
-		game->y += game->player_delta_y * game->speed;
+		game->x += game->player_delta_x * 2;
+		game->y += game->player_delta_y * 2;
 	}
 	return ;
 }
@@ -32,12 +32,12 @@ void	player_move_down(t_game *game)
 	float	n_x;
 	float	n_y;
 
-	n_x = game->x - game->player_delta_x * game->speed;
-	n_y = game->y - game->player_delta_y * game->speed;
+	n_x = game->x - game->player_delta_x * 2;
+	n_y = game->y - game->player_delta_y * 2;
 	if (BONUS != 1 || !is_wall(game, n_x, n_y))
 	{
-		game->x -= game->player_delta_x * game->speed;
-		game->y -= game->player_delta_y * game->speed;
+		game->x -= game->player_delta_x * 2;
+		game->y -= game->player_delta_y * 2;
 	}
 	return ;
 }
@@ -47,12 +47,12 @@ void	player_move_left(t_game *game)
 	float	n_x;
 	float	n_y;
 
-	n_x = game->x + cos(game->player_angle + M_PI / 2) * game->speed;
-	n_y = game->y + sin(game->player_angle + M_PI / 2) * game->speed;
+	n_x = game->x + cos(game->player_angle + M_PI / 2) * 5;
+	n_y = game->y + sin(game->player_angle + M_PI / 2) * 5;
 	if (BONUS != 1 || !is_wall(game, n_x, n_y))
 	{
-		game->x += cos(game->player_angle + M_PI / 2) * game->speed;
-		game->y += sin(game->player_angle + M_PI / 2) * game->speed;
+		game->x += cos(game->player_angle + M_PI / 2) * 5;
+		game->y += sin(game->player_angle + M_PI / 2) * 5;
 	}
 	return ;
 }
@@ -62,12 +62,12 @@ void	player_move_right(t_game *game)
 	float	n_x;
 	float	n_y;
 
-	n_x = game->x + cos(game->player_delta_x - M_PI / 2) * game->speed;
-	n_y = game->y + sin(game->player_delta_y - M_PI / 2) * game->speed;
+	n_x = game->x + cos(game->player_delta_x - M_PI / 2) * 5;
+	n_y = game->y + sin(game->player_delta_y - M_PI / 2) * 5;
 	if (BONUS != 1 || !is_wall(game, n_x, n_y))
 	{
-		game->x += cos(game->player_delta_x - M_PI / 2) * game->speed;
-		game->y += sin(game->player_delta_y - M_PI / 2) * game->speed;
+		game->x += cos(game->player_delta_x - M_PI / 2) * 5;
+		game->y += sin(game->player_delta_y - M_PI / 2) * 5;
 	}
 	return ;
 }
