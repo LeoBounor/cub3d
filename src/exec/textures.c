@@ -6,12 +6,18 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:42:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 18:58:47 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+/*
+**	Alloue de la mémoire pour chaque texture et vérifie si l'allocation a réussi.
+**	Si une allocation échoue, la fonction renvoie un code d'erreur spécifique 
+**	correspondant à la texture qui n'a pas pu être allouée.
+**	Sinon, elle renvoie le code 5.
+*/
 int	load_textures(t_texture_info *textures)
 {
 	textures->north_texture = ft_calloc(1, sizeof(t_texture));
@@ -29,6 +35,13 @@ int	load_textures(t_texture_info *textures)
 	return (5);
 }
 
+/*
+**	Alloue de la mémoire pour t_texture_info. 
+**	Ensuite, elle appelle load_textures pour charger les textures
+**	dans cette structure.
+**	Si load_textures renvoie un code d'erreur différent de 5,
+**	cela signifie qu'il y a eu une erreur lors de l'allocation des textures.
+*/
 t_texture_info	*init_all_textures(void)
 {
 	t_texture_info	*textures;
@@ -55,6 +68,13 @@ t_texture_info	*init_all_textures(void)
 	return (textures);
 }
 
+/*
+**	Calcule l'adresse mémoire du pixel correspondant dans la texture.
+**	Utilise un cast pour interpréter cette adresse mémoire comme un
+**	pointeur vers un entier (int *).
+**	Enfin, récupère la couleur du pixel en déréférençant le pointeur obtenu
+**	à partir de l'adresse mémoire calculée.
+*/
 int	get_texture_pixel(t_texture *texture, int x, int y)
 {
 	int	color;
@@ -80,4 +100,3 @@ void	set_texture_x_coordonates(t_ray *ray)
 		ray->texture->texture_x = ray->texture->width_img
 			- ray->texture->texture_x;
 }
-

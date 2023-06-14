@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:50:18 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 01:24:37 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 18:56:54 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	define_typeof_struct(char *str, int i, int *type)
 		*type = 3;
 	else if (!ft_strncmp(str + i, "EA ", 3) || !ft_strncmp(str + i, "EA	", 3))
 		*type = 4;
-	else if (!ft_strncmp(str + i, "F ", 2) || !ft_strncmp(str + i, "F	", 3)) //mettre 2 ou 3
+	else if (!ft_strncmp(str + i, "F ", 2) || !ft_strncmp(str + i, "F	", 3))
 		*type = 5;
 	else if (!ft_strncmp(str + i, "C ", 2) || !ft_strncmp(str + i, "C	", 3))
 		*type = 6;

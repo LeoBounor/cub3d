@@ -6,7 +6,7 @@
 #    By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 14:43:17 by jcollon           #+#    #+#              #
-#    Updated: 2023/06/14 01:32:32 by jcollon          ###   ########lyon.fr    #
+#    Updated: 2023/06/14 19:04:51 by jcollon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME := exec.a
 
 SRC_FILE := player_movements_rotation.c \
 			print_floor_ceiling.c \
+			raycasting_looking.c \
 			player_movements.c \
 			raycasting_utils.c \
 			main_execution.c \

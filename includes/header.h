@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:54:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 13:32:28 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 19:10:04 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 # include "../libft/libft.h"
 # include "execution.h"
+# include "utils.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>

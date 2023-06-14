@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_utils.c                                 :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 14:10:48 by lbounor           #+#    #+#             */
-/*   Updated: 2023/06/14 18:58:33 by jcollon          ###   ########lyon.fr   */
+/*   Created: 2023/06/14 19:08:56 by jcollon           #+#    #+#             */
+/*   Updated: 2023/06/14 19:09:36 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-double	get_traveled_ray_distance(float ax, float ay, float bx, float by)
-{
-	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
-}
+# include "header.h"
 
-double	assure_360_deg_angle(double a)
-{
-	double	two_pi;
+void				skip_to_next_parse(t_game *game, int *i);
+void				skip_to_eol_or_eof(char *str, int *i);
+void				skip_to_next_word(char *str, int *i);
+char				*ft_read_all(int fd, t_game *game, int i);
 
-	two_pi = 2 * M_PI;
-	if (a >= two_pi)
-		a -= (two_pi);
-	if (a < 0)
-		a += (two_pi);
-	return (a);
-}
+#endif /* UTILS_H */

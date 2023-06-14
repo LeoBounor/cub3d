@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:53:45 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 01:24:52 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 19:09:32 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ void				init_parse(char *map_file, t_game *game);
 void				check_map(t_game *game, int i, int j);
 void				load_texture(t_game *game, t_texture *texture, int *i);
 void				generate_tab(t_game *game, char *line);
-char				*ft_read_all(int fd, t_game *game, int i);
-void				skip_to_next_parse(t_game *game, int *i);
-void				skip_to_eol_or_eof(char *str, int *i);
-void				skip_to_next_word(char *str, int *i);
 void				load_color(t_game *game, int (*color)[3], int *i, int nb);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:04:26 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 15:10:01 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 18:58:02 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	game_loop(t_game *game)
 void	game_render(t_game game)
 {
 	mlx_hook(game.mlx_win, 2, 1L << 0, &handler_key_press, &game);
-	mlx_hook(game.mlx_win, 3, 1L << 0, &handler_key_release, &game);
 	mlx_hook(game.mlx_win, 17, 1L << 0, &handler_close_mlx, &game);
+	mlx_hook(game.mlx_win, 3, 1L << 0, &handler_key_release, &game);
 	mlx_loop_hook(game.mlx, &game_loop, &game);
 	mlx_loop(game.mlx);
 	return ;
