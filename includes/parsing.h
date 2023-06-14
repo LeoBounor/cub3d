@@ -6,7 +6,7 @@
 /*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:53:45 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/08 14:18:58 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/14 17:04:20 by Leo              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 # include <stdlib.h>
 # include "header.h"
 
-/*
-**	Parsing structure pour gagner de l'espace dans la fonction 'fill_tab'
-*/
 typedef struct s_parsing
 {
 	int		x;

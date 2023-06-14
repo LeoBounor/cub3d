@@ -6,7 +6,7 @@
 #    By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 09:53:59 by lbounor           #+#    #+#              #
-#    Updated: 2023/06/14 10:37:20 by Leo              ###   ########lyon.fr    #
+#    Updated: 2023/06/14 15:46:06 by Leo              ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRCS        :=      libft/ft_strnstr.c \
 						  src/exec/player_movements.c \
 						  src/exec/key_handler.c \
 						  src/exec/game_stop.c \
+						  src/exec/raycasting_looking.c \
 						  src/exec/raycasting.c \
 						  src/exec/main_execution.c \
 						  src/exec/raycasting_utils.c \
