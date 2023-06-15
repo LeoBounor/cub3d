@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:23:46 by lbounor           #+#    #+#             */
-/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 14:12:16 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	remove_fisheye_effect(t_game *game, t_raycast *raycast, t_ray *ray)
 {
 	ray->traveled_distance = ray->traveled_distance
 		* cos(assure_360_deg_angle(game->player_angle - raycast->ray_angle));
-	if (ray->traveled_distance < 1)
-		ray->traveled_distance = 1;
 }
 
 void	draw_walls(t_game *game, t_raycast *raycast, t_ray *ray, int x)

@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:07:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 01:20:23 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 14:11:52 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ int	*fill_tab(t_game *game, char *line, int i, int j)
 	int			*str;
 	t_parsing	parse;
 
-	parse.x = 0;
-	parse.y = i;
-	str = malloc(sizeof(int) * game->game_tab_width);
-	if (!str && clear_textures(game))
-		ft_err_map("Malloc error\n", game->fd_str, game);
+	p.x = 0;
+	p.y = i;
+	str = ft_calloc(game->game_tab_width, sizeof(int));
+	if (!str && clear_textures(game) && free_map(game->game_tab, -1))
+		return (ft_err_map("Malloc error\n", game->fd_str, game), NULL);
 	while (i != 0)
 		if (line[parse.x++] == '\n')
 			i--;
@@ -70,7 +70,7 @@ int	*fill_tab(t_game *game, char *line, int i, int j)
 	{
 		if (line[parse.x] != 48 && line[parse.x] != 49 && line[parse.x] != 78 \
 			&& line[parse.x] != 83 && line[parse.x] != 69 && line[parse.x] != \
-			87 && line[parse.x] != 32 && clear_textures(game) &&
+			87 && line[parse.x] != 32 && clear_textures(game) && \
 			free_map(game->game_tab, parse.y))
 			return (ft_err_map("Invalid char in the map\n", game->fd_str, game),
 				NULL);

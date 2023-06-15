@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:54:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 19:38:41 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 14:08:39 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,4 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# ifndef DEBUG
-#  define DEBUG 0
-# endif
-
-# define ERROR -1
-# ifndef BONUS
-#  define BONUS 0
-# endif
-# define PI 3.1415926535897932384
 #endif
