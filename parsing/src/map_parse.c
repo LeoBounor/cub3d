@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:07:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 14:26:07 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 15:25:20 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ void	get_dimension(int *h, int *w, char *str)
 	}
 }
 
+int	*create_tab(t_game *game)
+{
+	int	*tab;
+
+	tab = ft_calloc(game->game_tab_width, sizeof(int));
+	if (!tab && clear_textures(game) && free_map(game->game_tab, -1))
+		return (ft_err_map("Malloc error\n", game->fd_str, game), NULL);
+	return (tab);
+}
+
 /**
  * @brief Fill the table with the map, and replace the spaces by 2
  * 
@@ -55,35 +65,31 @@ void	get_dimension(int *h, int *w, char *str)
  */
 int	*fill_tab(t_game *game, char *line, int i, int j)
 {
-	int			*str;
-	t_parsing	parse;
+	int			*tab;
+	t_parsing	p;
 
-	parse.x = 0;
-	parse.y = i;
-	str = ft_calloc(game->game_tab_width, sizeof(int));
-	if (!str && clear_textures(game) && free_map(game->game_tab, -1))
-		return (ft_err_map("Malloc error\n", game->fd_str, game), NULL);
+	p.x = 0;
+	p.y = i;
+	tab = create_tab(game);
 	while (i != 0)
-		if (line[parse.x++] == '\n')
+		if (line[p.x++] == '\n')
 			i--;
-	while (line[parse.x] && line[parse.x] != '\n')
+	while (line[p.x] && line[p.x] != '\n')
 	{
-		if (line[parse.x] != 48 && line[parse.x] != 49 && line[parse.x] != 78 \
-			&& line[parse.x] != 83 && line[parse.x] != 69 && line[parse.x] != \
-			87 && line[parse.x] != 32 && clear_textures(game) && \
-			free_map(game->game_tab, parse.y))
-			return (ft_err_map("Invalid char in the map\n", game->fd_str, game),
-				NULL);
-		if (line[parse.x] == ' ')
-			str[j] = 2;
+		if (line[p.x] != 48 && line[p.x] != 49 && line[p.x] != 78 && line[p.x] \
+		!= 83 && line[p.x] != 69 && line[p.x] != 87 && line[p.x] != 32 && \
+		clear_textures(game) && free_map(game->game_tab, p.y))
+			return (ft_err_map("Invalid map char\n", game->fd_str, game), NULL);
+		if (line[p.x] == ' ')
+			tab[j] = 2;
 		else
-			str[j] = line[parse.x] - '0';
+			tab[j] = line[p.x] - '0';
 		j++;
-		parse.x++;
+		p.x++;
 	}
 	while (j != game->game_tab_width)
-		str[j++] = 2;
-	return (str);
+		tab[j++] = 2;
+	return (tab);
 }
 
 /**

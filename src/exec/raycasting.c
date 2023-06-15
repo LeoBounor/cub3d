@@ -6,12 +6,21 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 21:51:49 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 14:13:23 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 15:33:11 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+/**
+ * @brief Check if the ray is looking up or down if vertical is 0 else check if
+ * the ray is looking left or right
+ * 
+ * @param vertical 
+ * @param game 
+ * @param ray 
+ * @param ray_angle 
+ */
 void	raycasting_angle_interpeter(int vertical, t_game *game, t_ray *ray,
 	float ray_angle)
 {
@@ -38,6 +47,14 @@ void	raycasting_angle_interpeter(int vertical, t_game *game, t_ray *ray,
 	}
 }
 
+/**
+ * @brief Check if the ray is colliding with a wall
+ * 
+ * @param raycast: raycast struct
+ * @param ray: current ray
+ * @param game: game struct
+ * @param vertical: 1 if the ray is vertical, 0 if horizontal
+ */
 void	check_ray_collision(t_raycast *raycast, t_ray *ray,
 	t_game *game, int vertical)
 {
@@ -64,6 +81,12 @@ void	check_ray_collision(t_raycast *raycast, t_ray *ray,
 	}
 }
 
+/**
+ * @brief Shoot a ray from the player to the wall and draw the wall, check
+ * vertical and horizontal wall collision and draw the closest wall
+ * 
+ * @param game: game struct
+ */
 void	raycasting(t_game *game)
 {
 	int			x;

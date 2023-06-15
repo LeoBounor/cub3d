@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:23:46 by lbounor           #+#    #+#             */
-/*   Updated: 2023/06/15 14:12:16 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 15:26:33 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	remove_fisheye_effect(t_game *game, t_raycast *raycast, t_ray *ray)
 		* cos(assure_360_deg_angle(game->player_angle - raycast->ray_angle));
 }
 
+/**
+ * @brief Draw the walls
+ * 
+ * @param game: main game structure
+ * @param raycast: raycast structure
+ * @param ray: ray structure
+ * @param x: x position of the ray
+ */
 void	draw_walls(t_game *game, t_raycast *raycast, t_ray *ray, int x)
 {
 	float	wall_height;

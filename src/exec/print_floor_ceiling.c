@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:37:58 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 13:44:44 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 14:45:40 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ unsigned long	rgb_to_hexa(int color[3])
 		+ (color[2] & 0xff));
 }
 
+/**
+ * @brief Print the floor and the ceiling
+ * 
+ * @param game: game structure
+ */
 void	print_floor_and_ceiling(t_game *game)
 {
 	int	x;

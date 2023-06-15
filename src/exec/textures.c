@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:42:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 14:13:30 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 15:16:58 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ int	get_texture_pixel(t_texture *texture, int x, int y)
 	return (color);
 }
 
+/**
+ * @brief Set the texture x coordonates object
+ * 
+ * @param ray 
+ */
 void	set_texture_x_coordonates(t_ray *ray)
 {
 	if (ray->texture->texture_id % 2 == 0)
@@ -100,7 +105,7 @@ void	set_texture_x_coordonates(t_ray *ray)
 	else
 		ray->texture->texture_x = ((ray->y / 64.0f) - (int)(ray->y / 64.0f))
 			* ray->texture->width_img;
-	if (ray->texture->texture_id == 3 || ray->texture->texture_id == 4)
+	if (ray->texture->texture_id == 2 || ray->texture->texture_id == 3)
 		ray->texture->texture_x = ray->texture->width_img
 			- ray->texture->texture_x;
 }

@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:06:45 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 14:13:17 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 14:41:05 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	player_move_up(t_game *game)
 	n_y = game->y + game->player_delta_y * 2;
 	if (!is_wall(game, n_x, n_y))
 	{
-		game->x += game->player_delta_x * 2;
-		game->y += game->player_delta_y * 2;
+		game->x = n_x;
+		game->y = n_y;
 	}
 	return ;
 }
@@ -36,8 +36,8 @@ void	player_move_down(t_game *game)
 	n_y = game->y - game->player_delta_y * 2;
 	if (!is_wall(game, n_x, n_y))
 	{
-		game->x -= game->player_delta_x * 2;
-		game->y -= game->player_delta_y * 2;
+		game->x = n_x;
+		game->y = n_y;
 	}
 	return ;
 }
@@ -51,8 +51,8 @@ void	player_move_left(t_game *game)
 	n_y = game->y + sin(game->player_angle + M_PI / 2) * 5;
 	if (!is_wall(game, n_x, n_y))
 	{
-		game->x += cos(game->player_angle + M_PI / 2) * 5;
-		game->y += sin(game->player_angle + M_PI / 2) * 5;
+		game->x = n_x;
+		game->y = n_y;
 	}
 	return ;
 }
@@ -66,8 +66,8 @@ void	player_move_right(t_game *game)
 	n_y = game->y + sin(game->player_angle - M_PI / 2) * 5;
 	if (!is_wall(game, n_x, n_y))
 	{
-		game->x += cos(game->player_angle - M_PI / 2) * 5;
-		game->y += sin(game->player_angle - M_PI / 2) * 5;
+		game->x = n_x;
+		game->y = n_y;
 	}
 	return ;
 }
