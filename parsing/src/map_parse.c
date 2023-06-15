@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:07:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 11:22:27 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 13:30:58 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	*fill_tab(t_game *game, char *line, int i, int j)
 
 	p.x = 0;
 	p.y = i;
-	str = ft_calloc(game->game_tab_width, sizeof(int));
+	str =  ft_calloc(game->game_tab_width, sizeof(int));
+	if (!str && clear_textures(game) && free_map(game->game_tab, -1))
+		return (ft_err_map("Malloc error\n", game->fd_str, game), NULL);
 	while (i != 0)
 		if (line[p.x++] == '\n')
 			i--;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 17:56:43 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 19:10:04 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 13:35:47 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_read_all(int fd, t_game *game, int i)
 			read_error(fd, buffer, "Error while reading the file\n", game);
 		buffer[i] = '\0';
 		all = ft_free_strjoin(all, buffer);
-		if (!all)
+		if (!all && clear_textures(game))
 			read_error(fd, buffer, "Error while reading the file\n", game);
 	}
 	free(buffer);

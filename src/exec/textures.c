@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:42:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/13 18:55:51 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 13:55:36 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 */
 int	load_textures(t_texture_info *textures)
 {
+	textures->north_texture = 0;
+	textures->east_texture = 0;
+	textures->south_texture = 0;
+	textures->west_texture = 0;
 	textures->north_texture = ft_calloc(1, sizeof(t_texture));
 	if (!textures->north_texture)
 		return (1);
@@ -54,13 +58,13 @@ t_texture_info	*init_all_textures(void)
 	ret = load_textures(textures);
 	if (ret != 5)
 	{
-		if (ret <= 1)
+		if (ret >= 1)
 			free(textures->north_texture);
-		if (ret <= 2)
+		if (ret >= 2)
 			free(textures->east_texture);
-		if (ret <= 3)
+		if (ret >= 3)
 			free(textures->south_texture);
-		if (ret <= 4)
+		if (ret >= 4)
 			free(textures->west_texture);
 		free(textures);
 		return (NULL);
