@@ -6,7 +6,7 @@
 /*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:32:45 by Leo               #+#    #+#             */
-/*   Updated: 2021/11/10 15:36:59 by lbounor          ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 10:37:55 by lbounor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ static int	ft_nblen(long long int n)
 char	*ft_itoa(int n)
 {
 	int				len;
-	int				i;
 	char			*strconvert;
 	long long int	long_n;
 
 	long_n = n;
 	len = ft_nblen(long_n);
-	i = 0;
 	strconvert = (char *)malloc(sizeof(char) * len + 1);
 	if (!strconvert)
 		return (NULL);

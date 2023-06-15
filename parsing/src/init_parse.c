@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: lbounor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:50:18 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 11:18:28 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/15 11:52:07 by lbounor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	set_texture_null(t_game *game)
 void	init_parse(char *map_file, t_game *game)
 {
 	set_texture_null(game);
+	game->fd_str = NULL;
 	if ((ft_strlen(map_file) < 4 || ft_strncmp(map_file \
 		+ (ft_strlen(map_file) - 4), ".cub", 4) != 0) && clear_textures(game))
 		ft_err_map("Invalid map format\n", game->fd_str, game);

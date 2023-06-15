@@ -1,7 +1,7 @@
-NO ./xpm/wall.xpm
-SO ./xpm/wall11.xpm
-EA ./xpm/l_stand1.xpm
-WE ./xpm/stone.xpm
+NO ./sprites/wall.xpm
+SO ./sprites/wall11.xpm
+EA ./sprites/l_stand1.xpm
+WE ./sprites/stone.xpm
 
 C 128,128,128
 F 42,42,42

@@ -1,7 +1,7 @@
-NO ./xpm/brick.xpm
-SO ./xpm/blue.xpm
-WE ./xpm/wood.xpm
-EA ./xpm/grey.xpm
+NO ./sprites/wall.xpm
+SO ./sprites/wall11.xpm
+EA ./sprites/l_stand1.xpm
+WE ./sprites/stone.xpm
 
 D ./xpm/chest.xpm
 F 224,172,105

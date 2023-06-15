@@ -1,7 +1,7 @@
-WE  ./sprites/ben.xpm
-EA  ./sprites/ben.xpm
-SO  ./sprites/ben.xpm
-NO  ./sprites/ben.xpm
+NO ./sprites/wall.xpm
+SO ./sprites/wall11.xpm
+EA ./sprites/l_stand1.xpm
+WE ./sprites/stone.xpm
 
 F   255,0,255
 C   0,0,122
