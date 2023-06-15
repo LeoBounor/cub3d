@@ -6,7 +6,7 @@
 #    By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 14:43:17 by jcollon           #+#    #+#              #
-#    Updated: 2023/06/15 14:13:56 by jcollon          ###   ########lyon.fr    #
+#    Updated: 2023/06/15 14:24:41 by jcollon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ = $(addprefix $(DIR_OBJ)/, $(OBJ_FILE))
 DIR_OBJ := .obj
 FLAGS := -g3 -MMD -MP -Wall -Wextra -O3 -Werror
 
-INCLUDE := -I. -I../../includes -I../libft -I../minilibx
+INCLUDE := -I. -I../../includes -I../../libft -I../../minilibx
 RELINK := Makefile ../../libft/libft.a
 
 # COLORS
