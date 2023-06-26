@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:36:47 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 01:27:14 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/26 14:52:33 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void	game_struct_set_null(t_game *game)
 	game->all_textures = NULL;
 	game->img = NULL;
 	game->mlx_win = NULL;
-	game->game_tab = NULL;
-	game->raycast = NULL;
+	game->game_map = NULL;
 }
 
 void	game_init(char *map_path, t_game *game)
@@ -67,9 +66,4 @@ void	game_init(char *map_path, t_game *game)
 	init_game_window(game);
 	game->game_cell_size = 64;
 	game->speed = 4;
-	game->player_delta_x = cos(game->player_angle) * game->speed;
-	game->player_delta_y = sin(game->player_angle) * game->speed;
-	game->raycast = (t_raycast *)ft_calloc(1, sizeof(t_raycast));
-	if (!game->raycast)
-		return ;
 }

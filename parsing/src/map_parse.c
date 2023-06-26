@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:07:07 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 15:25:20 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/20 22:19:51 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	*create_tab(t_game *game)
 	int	*tab;
 
 	tab = ft_calloc(game->game_tab_width, sizeof(int));
-	if (!tab && clear_textures(game) && free_map(game->game_tab, -1))
-		return (ft_err_map("Malloc error\n", game->fd_str, game), NULL);
+	if (!tab && clear_textures(game) && free_map(game->game_map, -1))
+		ft_err_map("Malloc error\n", game->fd_str, game);
 	return (tab);
 }
 
@@ -78,7 +78,7 @@ int	*fill_tab(t_game *game, char *line, int i, int j)
 	{
 		if (line[p.x] != 48 && line[p.x] != 49 && line[p.x] != 78 && line[p.x] \
 		!= 83 && line[p.x] != 69 && line[p.x] != 87 && line[p.x] != 32 && \
-		clear_textures(game) && free_map(game->game_tab, p.y))
+		clear_textures(game) && free_map(game->game_map, p.y))
 			return (ft_err_map("Invalid map char\n", game->fd_str, game), NULL);
 		if (line[p.x] == ' ')
 			tab[j] = 2;
@@ -136,18 +136,18 @@ void	generate_tab(t_game *game, char *line)
 	while (*(line - 1) != '\n')
 		line--;
 	get_dimension(&game->game_tab_height, &game->game_tab_width, line);
-	game->game_tab = malloc(sizeof(char *) * game->game_tab_height);
-	if (!game->game_tab && clear_textures(game))
+	game->game_map = malloc(sizeof(char *) * game->game_tab_height);
+	if (!game->game_map && clear_textures(game))
 		ft_err_map("Malloc error\n", game->fd_str, game);
 	while (i != game->game_tab_height)
 	{
-		game->game_tab[i] = fill_tab(game, line, i, 0);
+		game->game_map[i] = fill_tab(game, line, i, 0);
 		i++;
 	}
 	if ((game->game_tab_height < 3 || game->game_tab_width < 3) && \
 		clear_textures(game))
 	{
-		free_map(game->game_tab, game->game_tab_height - 1);
+		free_map(game->game_map, game->game_tab_height - 1);
 		ft_err_map("Map too small\n", game->fd_str, game);
 	}
 	check_map(game, 1, 1);

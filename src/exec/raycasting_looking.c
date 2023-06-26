@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_looking.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Leo <Leo@student.42lyon.fr>                +#+  +:+       +#+        */
+/*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 11:17:16 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 11:18:00 by Leo              ###   ########lyon.fr   */
+/*   Updated: 2023/06/25 18:41:14 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/header.h"
+#include "header.h"
 
-void	raycasting_horizontal_looking_up(t_game *game, t_ray *ray)
+/**
+ * @brief Set the ray to look north, y is set to game->y rounded down to the
+ * nearest multiple of game->game_cell_size (64 so bitshifted by 6) and x is
+ * set to the intersection of the ray with the horizontal line at y
+ * 
+ * @param game: game struct
+ * @param ray: current ray
+ */
+void	raycasting_looking_north(t_game *game, t_ray *ray)
 {
 	ray->y = (((int)game->y >> 6) << 6) - 0.01;
 	ray->x = (game->y - ray->y) * ray->a_tan + game->x;
@@ -22,7 +30,14 @@ void	raycasting_horizontal_looking_up(t_game *game, t_ray *ray)
 	return ;
 }
 
-void	raycasting_horizontal_looking_down(t_game *game, t_ray *ray)
+/**
+ * @brief Set the ray to look south, y is set to game->y rounded up to the
+ * nearest multiple of game->game_cell_size and we add 
+ * 
+ * @param game: game struct
+ * @param ray: current ray
+ */
+void	raycasting_looking_south(t_game *game, t_ray *ray)
 {
 	ray->y = (((int)game->y >> 6) << 6) + game->game_cell_size;
 	ray->x = (game->y - ray->y) * ray->a_tan + game->x;
@@ -32,6 +47,13 @@ void	raycasting_horizontal_looking_down(t_game *game, t_ray *ray)
 	return ;
 }
 
+/**
+ * @brief Set the ray to look straight, x and y are set to the player's
+ * position and depth_of_field is set to stop the loop in raycasting.c
+ * 
+ * @param game: game struct
+ * @param ray: current ray
+ */
 void	raycasting_looking_straight(t_game *game, t_ray *ray)
 {
 	ray->x = game->x;
@@ -40,7 +62,15 @@ void	raycasting_looking_straight(t_game *game, t_ray *ray)
 	return ;
 }
 
-void	raycasting_vertical_looking_right(t_game *game, t_ray *ray)
+/**
+ * @brief Set the ray to look east, x is set to game->x rounded up to the
+ * nearest multiple of game->game_cell_size (64 so bitshifted by 6) and y is
+ * set to the intersection of the ray with the vertical line at x
+ * 
+ * @param game: game struct
+ * @param ray: current ray
+ */
+void	raycasting_looking_east(t_game *game, t_ray *ray)
 {
 	ray->x = (((int)game->x >> 6) << 6) + game->game_cell_size;
 	ray->y = (game->x - ray->x) * ray->a_tan + game->y;
@@ -50,7 +80,15 @@ void	raycasting_vertical_looking_right(t_game *game, t_ray *ray)
 	return ;
 }
 
-void	raycasting_vertical_looking_left(t_game *game, t_ray *ray)
+/**
+ * @brief Set the ray to look west, x is set to game->x rounded down to the
+ * nearest multiple of game->game_cell_size (64 so bitshifted by 6) and y is
+ * set to the intersection of the ray with the vertical line at x
+ * 
+ * @param game: game struct
+ * @param ray: current ray
+ */
+void	raycasting_looking_west(t_game *game, t_ray *ray)
 {
 	ray->x = (((int)game->x >> 6) << 6) - 0.01;
 	ray->y = (game->x - ray->x) * ray->a_tan + game->y;

@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:10:48 by lbounor           #+#    #+#             */
-/*   Updated: 2023/06/15 14:52:54 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/20 22:42:27 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @param by: y coordinate of the second point
  * @return double: distance between the two points
  */
-double	get_traveled_ray_distance(float ax, float ay, float bx, float by)
+double	get_traveled_distance(float ax, float ay, float bx, float by)
 {
 	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
 }
@@ -32,14 +32,14 @@ double	get_traveled_ray_distance(float ax, float ay, float bx, float by)
  * @param a: angle in radian
  * @return double: angle in radian between 0 and 2 * PI
  */
-double	assure_360_deg_angle(double a)
+double	assure_2_pi_angle(double a)
 {
 	double	two_pi;
 
 	two_pi = 2 * M_PI;
-	if (a >= two_pi)
+	while (a >= two_pi)
 		a -= (two_pi);
-	if (a < 0)
+	while (a < 0)
 		a += (two_pi);
 	return (a);
 }

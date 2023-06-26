@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 22:34:01 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/14 18:50:32 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/20 22:19:51 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ void	free_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->img);
 	if (game->mlx_win)
 		mlx_destroy_window(game->mlx, game->mlx_win);
-	if (game->game_tab)
-		free_map(game->game_tab, game->game_tab_height - 1);
+	if (game->game_map)
+		free_map(game->game_map, game->game_tab_height - 1);
 	stop_mlx(game);
-	if (game->raycast)
-		free(game->raycast);
 }
 
 void	free_and_exit_game(t_game *game, int exit_ret)

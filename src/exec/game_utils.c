@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:12:16 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 14:39:32 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/21 01:11:34 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
  * @brief Check if the given coordinates are inside the map limits.
  * 
  * @param game: game structure
- * @param x: x coordinate
- * @param y: y coordinate
+ * @param x: x coordinate on the game grid
+ * @param y: y coordinate on the game grid
  * @return int: 1 if the coordinates are inside the map limits, 0 otherwise
  */
 int	is_in_map_limits(t_game *game, int x, int y)
@@ -60,13 +60,13 @@ int	is_wall(t_game *game, float x, float y)
 {
 	if (!is_in_window_limits(game, x, y))
 		return (1);
-	if (game->game_tab[(int)y / game->game_cell_size][(int)x / \
-	game->game_cell_size] == 1 || game->game_tab[((int)y + 3) / \
+	if (game->game_map[(int)y / game->game_cell_size][(int)x / \
+	game->game_cell_size] == 1 || game->game_map[((int)y + 3) / \
 	game->game_cell_size][(int)x / game->game_cell_size] == 1 || \
-	game->game_tab[(int)y / game->game_cell_size][((int)x + 3) / \
-	game->game_cell_size] == 1 || game->game_tab[((int)y - 3) / \
+	game->game_map[(int)y / game->game_cell_size][((int)x + 3) / \
+	game->game_cell_size] == 1 || game->game_map[((int)y - 3) / \
 	game->game_cell_size][(int)x / game->game_cell_size] == 1 || \
-	game->game_tab[(int)y / game->game_cell_size][((int)x - 3) / \
+	game->game_map[(int)y / game->game_cell_size][((int)x - 3) / \
 	game->game_cell_size] == 1)
 		return (1);
 	return (0);

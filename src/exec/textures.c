@@ -6,18 +6,21 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:42:03 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 15:16:58 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/26 15:27:18 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-/*
-**	Alloue de la mémoire pour chaque texture et vérifie si l'allocation a réussi.
-**	Si une allocation échoue, la fonction renvoie un code d'erreur spécifique 
-**	correspondant à la texture qui n'a pas pu être allouée.
-**	Sinon, elle renvoie le code 5.
-*/
+/**
+ * @brief Allocate memory for each texture and check if the allocation was
+ * successful. If an allocation fails, the function returns a specific error
+ * code corresponding to the texture that could not be allocated. Otherwise, it
+ * returns code 5.
+ * 
+ * @param textures: structure containing all the textures
+ * @return int: error code
+ */
 int	load_textures(t_texture_info *textures)
 {
 	textures->north_texture = 0;
@@ -39,13 +42,15 @@ int	load_textures(t_texture_info *textures)
 	return (5);
 }
 
-/*
-**	Alloue de la mémoire pour t_texture_info. 
-**	Ensuite, elle appelle load_textures pour charger les textures
-**	dans cette structure.
-**	Si load_textures renvoie un code d'erreur différent de 5,
-**	cela signifie qu'il y a eu une erreur lors de l'allocation des textures.
-*/
+/**
+ * @brief Allocate memory for t_texture_info and call load_textures to load the
+ * textures in this structure. If load_textures returns an error code different
+ * from 5, it means that there was an error during the allocation of the
+ * textures.
+ * 
+ * @return t_texture_info*: pointer to the structure containing all the
+ * textures
+ */
 t_texture_info	*init_all_textures(void)
 {
 	t_texture_info	*textures;
@@ -72,17 +77,21 @@ t_texture_info	*init_all_textures(void)
 	return (textures);
 }
 
-/*
-**	Calcule l'adresse mémoire du pixel correspondant dans la texture.
-**	Utilise un cast pour interpréter cette adresse mémoire comme un
-**	pointeur vers un entier (int *).
-**	Enfin, récupère la couleur du pixel en déréférençant le pointeur obtenu
-**	à partir de l'adresse mémoire calculée.
-*/
-int	get_texture_pixel(t_texture *texture, int x, int y)
+/**
+ * @brief Get the texture pixel, texture_addr is the address of the first pixel
+ * of the texture, texture->x and texture->y are the coordonates of the pixel.
+ * 
+ * @param texture: texture from which we want to get the pixel
+ * @return int: color of the pixel
+ */
+int	get_texture_pixel(t_texture *texture)
 {
 	int	color;
+	int	x;
+	int	y;
 
+	x = texture->x;
+	y = texture->y;
 	if (!texture)
 		return (0);
 	if (x < 0 || x >= texture->width_img || y < 0 || y >= texture->height_img)
@@ -93,19 +102,19 @@ int	get_texture_pixel(t_texture *texture, int x, int y)
 }
 
 /**
- * @brief Set the texture x coordonates object
+ * @brief Set the texture x coordonates according to the texture id and the
+ * coordonates of the ray.
  * 
- * @param ray 
+ * @param ray: ray from which we want to set the texture x coordonates
  */
 void	set_texture_x_coordonates(t_ray *ray)
 {
 	if (ray->texture->texture_id % 2 == 0)
-		ray->texture->texture_x = ((ray->x / 64.0f) - (int)(ray->x / 64.0f))
+		ray->texture->x = ((ray->x / 64.0f) - (int)(ray->x / 64.0f))
 			* ray->texture->width_img;
 	else
-		ray->texture->texture_x = ((ray->y / 64.0f) - (int)(ray->y / 64.0f))
+		ray->texture->x = ((ray->y / 64.0f) - (int)(ray->y / 64.0f))
 			* ray->texture->width_img;
 	if (ray->texture->texture_id == 2 || ray->texture->texture_id == 3)
-		ray->texture->texture_x = ray->texture->width_img
-			- ray->texture->texture_x;
+		ray->texture->x = ray->texture->width_img - ray->texture->x;
 }

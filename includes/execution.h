@@ -6,7 +6,7 @@
 /*   By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:06:16 by Leo               #+#    #+#             */
-/*   Updated: 2023/06/15 14:08:29 by jcollon          ###   ########lyon.fr   */
+/*   Updated: 2023/06/26 14:47:57 by jcollon          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 typedef struct s_texture
 {
-	char	*xpm_path;
 	void	*texture;
 	char	*texture_addr;
 	int		bits_per_pixel;
@@ -24,8 +23,8 @@ typedef struct s_texture
 	int		width_img;
 	int		height_img;
 	int		texture_id;
-	double	texture_x;
-	double	texture_y;
+	double	x;
+	double	y;
 	double	ratio;
 }	t_texture;
 
@@ -51,18 +50,6 @@ typedef struct s_ray
 	float		traveled_distance;
 }	t_ray;
 
-typedef struct s_raycast
-{
-	int			ray_count;
-	double		ray_angle;
-	int			map_x;
-	int			map_y;
-	int			map_position;
-	t_ray		horizontal_ray;
-	t_ray		vertical_ray;
-	t_ray		*winning_ray;
-}	t_raycast;
-
 typedef struct s_game
 {
 	int				fd;
@@ -78,10 +65,8 @@ typedef struct s_game
 	int				window_height;
 	float			x;
 	float			y;
-	double			player_delta_x;
-	double			player_delta_y;
 	double			player_angle;
-	int				**game_tab;
+	int				**game_map;
 	int				game_tab_width;
 	int				game_tab_height;
 	int				game_tab_max_encountred_cell;
@@ -90,7 +75,6 @@ typedef struct s_game
 	int				movement_tab[6];
 	int				floor_color[3];
 	int				ceiling_color[3];
-	t_raycast		*raycast;
 	t_texture_info	*all_textures;
 }	t_game;
 
@@ -112,18 +96,18 @@ int					is_wall(t_game *game, float x, float y);
 void				print_floor_and_ceiling(t_game *game);
 unsigned long		rgb_to_hexa(int color[3]);
 void				raycasting(t_game *game);
-double				assure_360_deg_angle(double a);
+double				assure_2_pi_angle(double a);
 void				player_rotate_right(t_game *game);
 void				player_rotate_left(t_game *game);
-void				draw_walls(t_game *game, t_raycast *raycast, t_ray *ray, int x);
+void				draw_walls(t_game *game, double ray_angle, t_ray *ray, int x);
 void				set_texture_x_coordonates(t_ray *ray);
-int					get_texture_pixel(t_texture *texture, int x, int y);
-double				get_traveled_ray_distance(float ax, float ay, float bx, float by);
-void				raycasting_horizontal_looking_up(t_game *game, t_ray *ray);
-void				raycasting_horizontal_looking_down(t_game *game, t_ray *ray);
+int					get_texture_pixel(t_texture *texture);
+double				get_traveled_distance(float ax, float ay, float bx, float by);
+void				raycasting_looking_north(t_game *game, t_ray *ray);
+void				raycasting_looking_south(t_game *game, t_ray *ray);
 void				raycasting_looking_straight(t_game *game, t_ray *ray);
-void				raycasting_vertical_looking_right(t_game *game, t_ray *ray);
-void				raycasting_vertical_looking_left(t_game *game, t_ray *ray);
+void				raycasting_looking_east(t_game *game, t_ray *ray);
+void				raycasting_looking_west(t_game *game, t_ray *ray);
 
 //UTILS
 int					clear_textures(t_game *game);
