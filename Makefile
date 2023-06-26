@@ -6,12 +6,12 @@
 #    By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:11:58 by jcollon           #+#    #+#              #
-#    Updated: 2023/06/15 14:24:01 by jcollon          ###   ########lyon.fr    #
+#    Updated: 2023/06/20 13:59:26 by jcollon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL := /bin/bash
-NAME := cub3d
+NAME := cub3D
 CC := cc
 
 SRC_FILE := main.c
@@ -23,7 +23,9 @@ PARSING := parsing/parsing.a
 MINILIBX := minilibx/libmlx.a
 EXEC := src/exec/exec.a
 UTILS := src/utils/utils.a
-FLAGS := -g -MMD -MP -Wall -Wextra -O3 -Werror
+FLAGS := -g -MMD -MP -Wall -Wextra -Werror
+DEBUG := $(FLAGS)
+FLAGS += -O3
 
 ifeq ($(shell uname -s) , Linux)
 	MLX_FLAGS := -lXext -lX11 -lm
@@ -49,17 +51,21 @@ $(NAME): $(MINILIBX) $(LIBFT) $(UTILS) $(PARSING) $(EXEC) $(DIR_OBJ) $(OBJ)
 	echo -e "$(GOOD_TEXT)✅ Making $(NAME)$(BAD_TEXT)"
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME) $(EXEC) $(PARSING) $(UTILS) $(LIBFT) $(MINILIBX) $(MLX_FLAGS) $(INCLUDE)
 	printf "$(RESET)"
+debug: FORCE
+	touch Makefile $(LIBFT) $(EXEC) $(PARSING) $(UTILS)	
+	$(MAKE) -s FLAGS="$(DEBUG)" all
 
 $(DIR_OBJ):
 	mkdir -p $@
+
 $(LIBFT): FORCE
-	+$(MAKE) -sC libft
+	$(MAKE) -sC libft FLAGS="$(FLAGS)"
 $(PARSING): FORCE
-	+$(MAKE) -sC parsing
+	+$(MAKE) -sC parsing FLAGS="$(FLAGS)"
 $(EXEC): FORCE
-	+$(MAKE) -sC src/exec
+	+$(MAKE) -sC src/exec FLAGS="$(FLAGS)"
 $(UTILS): FORCE
-	+$(MAKE) -sC src/utils
+	+$(MAKE) -sC src/utils FLAGS="$(FLAGS)"
 $(MINILIBX):
 	if [[ " $(shell uname -s)" = *" Linux"* ]]; then \
 		ln -s mlx_linux minilibx; \
@@ -99,6 +105,6 @@ fclean: clean
 re: fclean all
 
 FORCE:
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re debug
 .SILENT:
 -include $(OBJ:.o=.d)
