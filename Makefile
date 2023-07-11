@@ -6,7 +6,7 @@
 #    By: jcollon <jcollon@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 15:11:58 by jcollon           #+#    #+#              #
-#    Updated: 2023/06/20 13:59:26 by jcollon          ###   ########lyon.fr    #
+#    Updated: 2023/07/11 16:41:31 by jcollon          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,9 +68,9 @@ $(UTILS): FORCE
 	+$(MAKE) -sC src/utils FLAGS="$(FLAGS)"
 $(MINILIBX):
 	if [[ " $(shell uname -s)" = *" Linux"* ]]; then \
-		ln -s mlx_linux minilibx; \
+		ln -nsf mlx_linux minilibx; \
 	else \
-		ln -s mlx minilibx; \
+		ln -nsf mlx_mac minilibx; \
 	fi
 	+$(MAKE) -j1 -sC minilibx
 
